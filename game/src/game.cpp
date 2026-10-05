@@ -4,7 +4,7 @@ using namespace utils;
 
 #pragma region gameFunctions
 
-float x{-400};
+float x{};
 float y{};
 float r{};
 float g{};
@@ -32,7 +32,9 @@ void Draw()
 	FillArc( (x + g_WindowWidth) / 2, (y + g_WindowHeight) / 2, g_WindowWidth / 4, g_WindowHeight / 3, 0.f, pi); //white arc
 
 	SetColor(0.f, 0.f, 0.f, 1.f); // middle part of the ball with the button
-	FillRect( (x + g_WindowWidth) / 4, (y + g_WindowHeight) / 2.1f, g_WindowWidth / 2.f, 25.f);
+
+	FillRect((x + g_WindowWidth) / 2 - g_WindowWidth / 4, (y + g_WindowHeight) / 2.1f, g_WindowWidth / 2.f, 25.f);
+
 	FillEllipse( (x + g_WindowWidth) / 2, (y + g_WindowHeight) / 2, 25.f, 25.f);
 	SetColor(1.f, 1.f, 1.f, 1.f);
 	FillEllipse( (x + g_WindowWidth) / 2, (y + g_WindowHeight) / 2, 15.f, 15.f);
@@ -44,10 +46,10 @@ void Draw()
 // Handle gameplay, movement and collisions here.
 void Update(float elapsedSec)
 {
-	++r;
+	++r; // red top
 
-	moveValue = (moveValue + 1) % 200;
-	x = ((moveValue-100) / 199.f) * 20;
+	moveValue = (moveValue + 1) % 800; // movement counter
+	x = (((moveValue)-400) / 799.f) * 2400;
 }
 
 // Delete textures and free other resources here.
